@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MEAP Angular</title>
+  <script src="angular/angular.min.js"></script>
+</head>
+<body ng-app="helloApp">
+	<div ng-controller="HelloCtrl">
+		<p>{{greeting}} {{person}}</p>
+		<input ng-model="person">
+	</div>
+    <script>
+		angular.module('helloApp').controller('HelloCtrl', function($scope) {
+			$scope.greeting = 'Hello';
+			$scope.person = 'World';
+		});
+	</script>
+</body>
+</html>
