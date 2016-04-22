@@ -1,0 +1,132 @@
+
+<div class="container">
+    <form role="form" name="viewEditExperimentForm" ng-submit="veCtrl.saveExperimentUpdate()" novalidate>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h4>{{veCtrl.captionViewEditExperiment}}</h4>
+                </div>
+            </div>
+        </div><!--row-->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Enabled</label>
+                    <input ng-model="experiment.enabled" type="checkbox">
+                </div>
+            </div>
+        </div><!--row-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Experiment Name</label>
+                        <input ng-model="experiment.experimentName" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Notification Type</label>
+                        <select ng-model="experiment.notificationType"  class="form-control" ng-options="notificationType for notificationType in notificationTypes">
+                        </select>
+                    </div>
+                </div> <!-- nested row-->
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="description">Experiment Description</label>
+                        <textarea ng-model="experiment.experimentDescription" class="form-control" rows="5" id="description"></textarea>
+                    </div>
+                </div><!-- nested row -->
+            </div><!--left column-->
+
+            <div class="col-md-4">
+                <div class="form-group" ng-controller="DatepickerCtrl">
+                    <label>Start Date</label>
+                    <p class="input-group">
+                        <input ng-model="experiment.startDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="startdt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+    				<span class="input-group-btn">
+        				<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        			</span>
+                    </p>
+                    <br>
+                </div>
+                <div class="form-group" ng-controller="DatepickerCtrl">
+                    <label>End Date</label>
+                    <p class="input-group">
+                        <input ng-model="experiment.endDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="enddt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+    				<span class="input-group-btn">
+        				<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        			</span>
+                    </p>
+                </div>
+                <br>
+            </div><!--right column-->
+        </div><!--row-->
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h4>{{veCtrl.captionVariances}}</h4>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <button type="button" ng-click="veCtrl.addVariance()" class="btn btn-link pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Add Variance</button>
+                </div>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Distribution Indexes</th>
+                            <th>Attributes</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="variance in experiment.variants">
+                            <td><button type="button" ng-click="veCtrl.editVariance($index)" class="btn btn-link">{{variance.name}}</button></td>
+                            <td>{{variance.description}}</td>
+                            <td>{{variance.distributionIndexes}}</td>
+                            <td>
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="attribute in variance.attributes">
+                                        <td>{{attribute.type}}</td>
+                                        <td>{{attribute.name}}</td>
+                                        <td>{{attribute.value}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td><button type="button" ng-click="veCtrl.deleteVariance(variance)" class="btn btn-link"><i class="glyphicon glyphicon-minus-sign"></i> Delete Variance</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary pull-right">Update</button>
+                </div>
+            </div>
+        </div><!--row-->
+
+    </form>
+</div><!--container-->
+

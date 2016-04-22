@@ -1,0 +1,107 @@
+
+<div class="container">
+    <form role="form" name="createVarianceForm" ng-submit="createVarianceForm.$valid && cvCtrl.addVariance()" novalidate>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <h4>{{cvCtrl.captionCreateVariance}}</h4>
+                </div>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="name">Variance Name</label>
+                    <input ng-model="cvCtrl.variance.name" type="text" class="form-control" id="name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="description">Variance Description</label>
+                    <textarea ng-model="cvCtrl.variance.description" class="form-control" rows="5" id="description"></textarea>
+                </div>
+            </div><!--left column-->
+            <div class="col-sm-4">
+                <label>Distribution Index</label>
+                <index-table-create class="form-group"></index-table-create>
+            </div><!--right column-->
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <h4>{{cvCtrl.captionAttributes}}</h4>
+                </div>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <select ng-model="cvCtrl.attribute.type"  class="form-control" ng-options="attributeType for attributeType in attributeTypes">
+                        <option value="">Attribute Type</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <input ng-model="cvCtrl.attribute.name" type="text" placeholder="Attribute Name" class="form-control" id="attributeName">
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <input ng-model="cvCtrl.attribute.value" type="text" placeholder="Attribute Value" class="form-control" id="attributeValue">
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <button type="button" ng-click="cvCtrl.addAttribute()" class="btn btn-default">Add</button>
+                </div>
+                <br>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Attribute Type</th>
+                            <th>Attribute Name</th>
+                            <th>Attribute Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="attribute in attributes">
+                            <td>{{attribute.type}}</td>
+                            <td>{{attribute.name}}</td>
+                            <td>{{attribute.value}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary pull-right">Create</button>
+                </div>
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <h4></h4><!--leave it empty on purpose-->
+                </div>
+            </div>
+        </div><!--row-->
+
+    </form>
+</div><!--container-->
+

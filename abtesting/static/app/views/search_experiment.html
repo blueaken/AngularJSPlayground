@@ -1,0 +1,53 @@
+<div class="container">
+    <form role="form" name="searchExperimentForm" novalidate>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <h4>{{seCtrl.captionSearchExperiment}}</h4>
+                </div>
+            </div>
+        </div><!--row-->
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="name">by Experiment Name</label>
+                    <input ng-model="experimentName" type="text" class="form-control" id="name">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label></label> <!-- leave for blank -->
+                    <button type="submit" ng-click="seCtrl.searchExperiment()" class="btn btn-primary pull-right">Search</button>
+                </div>
+            </div>
+        </div><!--row-->
+        <div class="row">
+            <div class="col-sm-12">
+                <label>Results</label>
+                <div class="form-group">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Experiment Name</th>
+                            <th>Notification Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="experiment in experiments">
+                            <td><button type="button" ng-click="seCtrl.editExperiment(experiment.experimentName)" class="btn btn-link">{{experiment.experimentName}}</button></td>
+                            <td>{{experiment.notificationType}}</td>
+                            <td>{{experiment.startDate| date:"MM/dd/yyyy h:mma"}}</td>
+                            <td>{{experiment.endDate | date:"MM/dd/yyyy h:mma"}}</td>
+                            <td><button type="button" ng-click="seCtrl.deleteExperiment(experiment.experimentName)" class="btn btn-link"><i class="glyphicon glyphicon-minus-sign"></i> Delete Experiment</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!--row-->
+
+    </form>
+</div><!--container-->

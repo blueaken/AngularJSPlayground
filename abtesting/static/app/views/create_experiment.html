@@ -1,0 +1,64 @@
+
+  <div class="container">
+  	<form role="form" name="createExperimentForm" novalidate>
+  	<div class="row">
+  		<div class="col-sm-4">
+  		<div class="form-group">
+  			<h4>{{ceCtrl.captionCreateExperiment}}</h4>
+  		</div>
+  		</div>
+  	</div><!--row-->
+  	<div class="row">
+  		<div class="col-sm-4">
+            <div class="form-group">
+                <label>Enabled</label>
+                <input id="toggle_button_ce" type="checkbox">
+            </div>
+            <br>
+  			<div class="form-group">
+                <label for="name">Experiment Name</label>
+                <input ng-model="experiment.experimentName" type="text" class="form-control" id="name">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="description">Experiment Description</label>
+                <textarea ng-model="experiment.experimentDescription" class="form-control" rows="5" id="description"></textarea>
+            </div>
+  		</div><!--left column-->
+  		
+  		<div class="col-sm-4">
+            <div class="form-group">
+                <label>Notification Type</label>
+                <select ng-model="experiment.notificationType"  class="form-control" ng-options="notificationType for notificationType in notificationTypes">
+                </select>
+            </div>
+            <br>
+			<div class="form-group" ng-controller="DatepickerCtrl">
+				<label>Start Date</label>
+    			<p class="input-group">
+    				<input ng-model="experiment.startDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="startdt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+    				<span class="input-group-btn">
+        				<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        			</span>
+    			</p>
+    			<br>
+    		</div>	
+    		<div class="form-group" ng-controller="DatepickerCtrl">
+    			<label>End Date</label>
+    			<p class="input-group">
+    				<input ng-model="experiment.endDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="enddt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+    				<span class="input-group-btn">
+        				<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        			</span>
+    			</p>
+			</div>
+			<br>	
+            <div class="form-group">
+                <button type="submit" ng-click="ceCtrl.addExperiment()" class="btn btn-primary pull-right">Next>></button>
+            </div>
+            <br>
+  		</div><!--right column-->
+
+  	</div><!--row-->
+  	</form>
+  </div><!--container-->
